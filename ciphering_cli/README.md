@@ -9,7 +9,7 @@ This tool encodes and decodes text using 3 substitution ciphers:
 
 Run the command "node ciphering_cli" in your terminal with the following parameters:
 
-1.  **-c, --config** (required): config for ciphers.
+1.  **-c, --config** (`required`): config for ciphers.
 Config is a string with pattern `{XY(-)}n`, where:
     * X is a cipher mark:
         * C is for Caesar cipher (with shift 1)
