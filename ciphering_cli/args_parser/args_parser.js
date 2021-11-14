@@ -55,31 +55,37 @@ const parseArgs = (args) => {
     };
 
     let checkFileRes;
+    let error = null;
     for (let i = 0; i < args.length; i++) {
         if (args[i] === '-c' || args[i] === '--config') {
             if (res.transforms !== null) {
-                throw new DublicateArgError('config');
+                error = new DublicateArgError('config');
+                break;
             }
             res.transforms = parseConfigStr(args[i + 1]);
         }   else if (args[i] === '-i' || args[i] === '--input') {
             if (res.inputPath !== null) {
-                throw new DublicateArgError('input');
+                error = new DublicateArgError('input');
+                break;
             }
 
             checkFileRes = checkFile(args[i + 1], constants.R_OK);
             if (checkFileRes !== '') {
-                throw new FileError(checkFileRes);
+                error = new FileError(checkFileRes);
+                break;
             }
 
             res.inputPath =  args[i + 1];
         }    else if (args[i] === '-o' || args[i] === '--output') {
             if (res.outputPath !== null) {
-                throw new DublicateArgError('output');
+                error = new DublicateArgError('output');
+                break;
             }
 
             checkFileRes = checkFile(args[i + 1], constants.W_OK);
             if (checkFileRes !== '') {
-                throw new FileError(checkFileRes);
+                error = new FileError(checkFileRes);
+                break
             }
 
             res.outputPath = args[i + 1];
@@ -88,6 +94,8 @@ const parseArgs = (args) => {
 
     if (res.transforms === null) {
         throw new MissingArgError('config');
+    }   else if (error !== null) {
+        throw error;
     }
 
     return res;
