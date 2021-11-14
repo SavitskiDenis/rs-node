@@ -12,7 +12,7 @@ Run the command "node ciphering_cli" in your terminal with the following paramet
 1.  **-c, --config** (`required`): config for ciphers.
 Config is a string with pattern `{XY(-)}n`, where:
     * X is a cipher mark:
-        * C is for Caesar cipher (with shift 1)
+        * C is for Caesar cipher
         * A is for Atbash cipher
         * R is for ROT-8 cipher
     * Y is flag of encoding or decoding (mandatory for Caesar cipher and ROT-8 cipher and should not be passed Atbash cipher)
