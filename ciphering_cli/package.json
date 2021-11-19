@@ -1,0 +1,14 @@
+{
+  "name": "ciphering_cli",
+  "description": "This tool encodes and decodes text using 3 substitution ciphers:\r - Caesar cipher (with shift 1)\r - Atbash cipher\r - ROT-8",
+  "version": "1.0.0",
+  "main": "ciphering_cli.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jest": "^27.3.1"
+  }
+}
