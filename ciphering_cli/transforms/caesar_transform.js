@@ -2,10 +2,6 @@ const CipheringTransform = require('./ciphering_transform');
 
 class CaesarTransform extends CipheringTransform {
     constructor (encoding) {
-        if (typeof encoding !== 'boolean') {
-            throw new Error('Uncorrect arg');
-        }
-
         let config;
         if (encoding) {
             // encoding config
