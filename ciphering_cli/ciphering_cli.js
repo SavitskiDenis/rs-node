@@ -1,5 +1,5 @@
 const { pipeline } = require('stream');
-const { AtbashTransform, CaesarTransform, Rot8 } = require('./transforms');
+const { AtbashTransform, CaesarTransform, Rot8Transform } = require('./transforms');
 const CipheringReadStream = require('./readable/ciphering_read_stream');
 const CipheringWriteStream = require('./writable/ciphering_write_stream');
 const parseArgs = require('./args_parser/args_parser');
@@ -13,7 +13,7 @@ const generateStreamsArrayByConfig = (config) => {
         }   else if (el.type === 'A') {
             streams.push(new AtbashTransform());
         }   else if (el.type === 'R') {
-            streams.push(new Rot8(el.encoding));
+            streams.push(new Rot8Transform(el.encoding));
         }
     });
     
