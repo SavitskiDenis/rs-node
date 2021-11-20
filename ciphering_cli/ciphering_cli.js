@@ -1,8 +1,8 @@
 const { pipeline } = require('stream');
-const { AtbashTransform, CaesarTransform, Rot8Transform } = require('./transforms');
-const CipheringReadStream = require('./readable/ciphering_read_stream');
-const CipheringWriteStream = require('./writable/ciphering_write_stream');
-const parseArgs = require('./args_parser/args_parser');
+const { AtbashTransform, CaesarTransform, Rot8Transform } = require('./src/transforms');
+const CipheringReadStream = require('./src/readable/ciphering_read_stream');
+const CipheringWriteStream = require('./src/writable/ciphering_write_stream');
+const parseArgs = require('./src/args_parser/args_parser');
 
 const generateStreamsArrayByConfig = (config) => {
     const streams = [ new CipheringReadStream(config.inputPath) ];
