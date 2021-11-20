@@ -29,8 +29,8 @@ const checkFile = (path, mode) => {
 
     try {
         accessSync(path, mode);
-    }   catch (err) {
-        return err.message;
+    }   catch (_) {
+        return `Access denied to '${path}'`
     }
     
     if (!lstatSync(path).isFile()) {
