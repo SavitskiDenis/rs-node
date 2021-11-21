@@ -23,6 +23,8 @@ Config is a string with pattern `{XY(-)}n`, where:
 
 # Testing
 
+Before running the tests, run the `npm i` command to install just.
+
 Run the `npm run test` command to run all the tests.
 
 Run the `npm run test:coverage` command to get tests coverage.
