@@ -7,7 +7,7 @@ This tool encodes and decodes text using 3 substitution ciphers:
 
 # How to use
 
-Run the command "node ciphering_cli" in your terminal with the following parameters:
+Run the command `node ciphering_cli` in your terminal with the following parameters:
 
 1.  **-c, --config** (`required`): config for ciphers.
 Config is a string with pattern `{XY(-)}n`, where:
@@ -20,3 +20,9 @@ Config is a string with pattern `{XY(-)}n`, where:
         * `0` is for decoding
 2.  **-i, --input**: a path to input file. If not specified, the text will be read from the terminal
 3.  **-o, --output**: a path to output file. If not specified, the result will be printed to the terminal
+
+# Testing
+
+Run the `npm run test` command to run all the tests.
+
+Run the `npm run test:coverage` command to get tests coverage.
