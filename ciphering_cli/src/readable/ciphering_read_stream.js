@@ -1,5 +1,5 @@
 const { Readable } = require('stream');
-const { readFile } = require('fs');
+const { readFileSync } = require('fs');
 
 class CipheringReadStream extends Readable {
     constructor (path) {
@@ -9,24 +9,12 @@ class CipheringReadStream extends Readable {
     }
 
     _read () {
-        if (this.path !== null && typeof this.path === 'string') {
-            readFile(this.path, (err, data) => {
-                if (err) {
-                    throw err;
-                }
-
-                this.push(data);
-                this.push(null);
-            });
-        }   else {
-            const dataListener = () => {
-                let chunk;
-                while ((chunk = process.stdin.read()) !== null) {
-                    this.push(chunk);
-                }
-            }
-
-            process.stdin.on('readable', dataListener);
+        try {
+            const data = readFileSync(this.path);
+            this.push(data);
+            this.push(null);
+        } catch (err) {
+            this.emit('error', err);
         }
     }
 }
