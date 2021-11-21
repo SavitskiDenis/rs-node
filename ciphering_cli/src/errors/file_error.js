@@ -1,6 +1,6 @@
 class FileError extends Error {
-    constructor (msg = '') {
-        super(`Incorrect file.${msg !== '' ? ` ${msg}` : ''}`);
+    constructor (msg) {
+        super(`Incorrect file. ${msg}`);
         this.name = 'FileError';
         this.cliError = true;
     }

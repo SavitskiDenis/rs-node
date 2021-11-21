@@ -1,8 +1,5 @@
 const { accessSync, constants, lstatSync } = require('fs');
-const DublicateArgError = require('../errors/dublicate_arg_error');
-const MissingArgError = require('../errors/missing_arg_error');
-const IncorrectConfigError = require('../errors/incorrect_config_error');
-const FileError = require('../errors/file_error');
+const { DublicateArgError, MissingArgError, IncorrectConfigError, FileError } = require('../errors');
 
 const parseConfigStr = (value) => {
     if (typeof value !== 'string' || value.length === 0) {
@@ -32,8 +29,8 @@ const checkFile = (path, mode) => {
 
     try {
         accessSync(path, mode);
-    }   catch (err) {
-        return err.message;
+    }   catch (_) {
+        return `Access denied to '${path}'`
     }
     
     if (!lstatSync(path).isFile()) {
